@@ -2,7 +2,9 @@ import { once } from 'events';
 import { Unleash, UnleashConfig } from './unleash';
 import { Variant, getDefaultVariant } from './variant';
 import { Context } from './context';
+import FeatureFlag from './vue/featureFlag';
 
+export { FeatureFlag };
 export { Strategy } from './strategy/index';
 export { Context, Variant, Unleash };
 

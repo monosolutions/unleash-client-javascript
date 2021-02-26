@@ -1,4 +1,4 @@
-import { Unleash } from '../index';
+import { Unleash } from '../unleash';
 import { Context } from '../context';
 
 const unleash = new Unleash({
