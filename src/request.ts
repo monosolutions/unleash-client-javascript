@@ -49,14 +49,14 @@ export const buildHeaders = (
   return head;
 };
 
-export const post = ({ url, appName, timeout, instanceId, headers, json }: PostRequestOptions) =>
+export const post = ({ url, appName, instanceId, headers, json }: PostRequestOptions) =>
   fetch(url, {
     method: 'POST',
     headers: buildHeaders(appName, instanceId, undefined, 'application/json', headers),
     body: JSON.stringify(json),
   });
 
-export const get = ({ url, etag, appName, timeout, instanceId, headers }: GetRequestOptions) =>
+export const get = ({ url, etag, appName, instanceId, headers }: GetRequestOptions) =>
   fetch(url, {
     method: 'GET',
     headers: buildHeaders(appName, instanceId, etag, undefined, headers),

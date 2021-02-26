@@ -88,7 +88,7 @@ export class Unleash extends EventEmitter {
       throw new Error('Unleash client appName missing');
     }
 
-    let unleashInstanceId = instanceId || '';
+    const unleashInstanceId = instanceId || '';
 
     this.staticContext = { appName, environment };
 
