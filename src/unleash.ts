@@ -1,4 +1,3 @@
-import { tmpdir, userInfo, hostname } from 'os';
 import { EventEmitter } from 'events';
 import Client from './client';
 import Repository, { RepositoryInterface } from './repository';
@@ -13,7 +12,7 @@ import { FallbackFunction, createFallbackFunction } from './helpers';
 
 export { Strategy };
 
-const BACKUP_PATH: string = tmpdir();
+const BACKUP_PATH: string = 'temp';
 
 export interface UnleashConfig {
   appName: string;
@@ -89,20 +88,7 @@ export class Unleash extends EventEmitter {
       throw new Error('Unleash client appName missing');
     }
 
-    let unleashInstanceId = instanceId;
-    if (!unleashInstanceId) {
-      let info;
-      try {
-        info = userInfo();
-      } catch (e) {
-        // unable to read info;
-      }
-
-      const prefix = info
-        ? info.username
-        : `generated-${Math.round(Math.random() * 1000000)}-${process.pid}`;
-      unleashInstanceId = `${prefix}-${hostname()}`;
-    }
+    let unleashInstanceId = instanceId || '';
 
     this.staticContext = { appName, environment };
 

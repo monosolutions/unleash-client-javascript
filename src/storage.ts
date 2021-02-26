@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import { join } from 'path';
-import { writeFile, readFile } from 'fs';
+import * as localForage from 'localforage';
 
 export interface StorageOptions {
   backupPath: string;
@@ -50,7 +50,7 @@ export class Storage extends EventEmitter implements EventEmitter {
   }
 
   persist(): void {
-    writeFile(this.path, JSON.stringify(this.data), (err) => {
+    localForage.setItem(this.path, JSON.stringify(this.data), (err: any) => {
       if (err) {
         this.emit('error', err);
       }
@@ -59,7 +59,7 @@ export class Storage extends EventEmitter implements EventEmitter {
   }
 
   load(): void {
-    readFile(this.path, 'utf8', (err, data: string) => {
+    localForage.getItem(this.path, (err: any, data: string | null) => {
       if (this.ready) {
         return;
       }
@@ -68,6 +68,9 @@ export class Storage extends EventEmitter implements EventEmitter {
         if (err.code !== 'ENOENT') {
           this.emit('error', err);
         }
+        return;
+      }
+      if (!data) {
         return;
       }
 

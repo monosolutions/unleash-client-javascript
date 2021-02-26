@@ -1,5 +1,4 @@
 import DefaultStrategy from './default-strategy';
-import ApplicationHostnameStrategy from './application-hostname-strategy';
 import GradualRolloutRandomStrategy from './gradual-rollout-random';
 import GradualRolloutUserIdStrategy from './gradual-rollout-user-id';
 import GradualRolloutSessionIdStrategy from './gradual-rollout-session-id';
@@ -13,7 +12,6 @@ export { StrategyTransportInterface } from './strategy';
 
 export const defaultStrategies: Array<Strategy> = [
   new DefaultStrategy(),
-  new ApplicationHostnameStrategy(),
   new GradualRolloutRandomStrategy(),
   new GradualRolloutUserIdStrategy(),
   new GradualRolloutSessionIdStrategy(),
