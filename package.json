@@ -1,6 +1,6 @@
 {
   "name": "@monosolutions/unleash-client",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Unleash Client for Node",
   "license": "Apache-2.0",
   "main": "./lib/index.js",
@@ -33,7 +33,6 @@
   "dependencies": {
     "ip": "^1.1.5",
     "localforage": "^1.9.0",
-    "make-fetch-happen": "^8.0.14",
     "murmurhash3js": "^3.0.1"
   },
   "engines": {
